@@ -6,4 +6,8 @@ object Main extends App {
   Topic1HigherOrderFunctions()
   hr
   Topic2Currying()
+  hr
+  Topic3DataAbstraction()
+  hr
+  Topic4InfixNotationAndRelaxedIdentifiers()
 }
