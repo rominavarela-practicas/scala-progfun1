@@ -1,2 +1,8 @@
-*.class
-*.log
+/.metadata/
+/bin/
+/*/.classpath
+/*/.project
+/*/.cache*
+/*/.settings/
+/*/bin/
+/progfun1-homework*

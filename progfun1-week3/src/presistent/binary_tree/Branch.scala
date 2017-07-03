@@ -4,7 +4,6 @@ import presistent.BinaryTree
 
 class Branch (val N:Int, val left:BinaryTree[Int], val right:BinaryTree[Int]) extends BinaryTree[Int] {
   def rootValue = Some(N)
-  def children = left :: right :: Nil
   
   def contains(n:Int) = {
     if(n < N) left.contains(n)
@@ -66,7 +65,9 @@ class Branch (val N:Int, val left:BinaryTree[Int], val right:BinaryTree[Int]) ex
       val $other = other - N
       new Branch(N, left n $other, right n $other)
     }
-    else (left u right) n other
+    else {
+      (left u right) n other
+    }
   }
   
   override def toString = N + " {" + left + ", " + right + "}"
