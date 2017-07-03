@@ -6,6 +6,7 @@ object Main extends App {
   println("- Classes can 'extend' one Trait or Abstract Class 'with' various Traits")
   println("- Classes can be instantiated. Objects are singleton Classes.")
   println("- Classes and Abstract Classes can have fields (def) and params (val, var). Traits can only have fields.")
+  println("")
   
   val pairs = EmptyLeaf + 2 + 4 + 6 + 8 + 10
     

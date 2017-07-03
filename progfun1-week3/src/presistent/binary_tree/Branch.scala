@@ -1,8 +1,8 @@
 package presistent.binary_tree
 
-import presistent.Node
+import presistent.BinaryTree
 
-class Branch (val N:Int, val left:Node[Int], val right:Node[Int]) extends Node[Int] {
+class Branch (val N:Int, val left:BinaryTree[Int], val right:BinaryTree[Int]) extends BinaryTree[Int] {
   def rootValue = Some(N)
   def children = left :: right :: Nil
   
@@ -12,10 +12,23 @@ class Branch (val N:Int, val left:Node[Int], val right:Node[Int]) extends Node[I
     else true
   }
   
+  def > (n:Int) = {
+    N > n
+  }
+  
+  def < (n:Int) = {
+    N < n
+  }
+  
   def + (n:Int) = {
     if(this.contains(n)) this
     else if(n < N) new Branch(N, left + n, right)
     else new Branch(N, left, right + n)
+  }
+  
+  def + (n:Option[Int]) = {
+    if(n.isDefined) this + n.get
+    else this
   }
   
   def - (n:Int) = {
@@ -25,37 +38,30 @@ class Branch (val N:Int, val left:Node[Int], val right:Node[Int]) extends Node[I
     else new Branch(N, left, right - n)
   }
   
-  def u (other:Node[Int]) = {
+  def u (other:BinaryTree[Int]) = {
     val $other = other - N
     
     if($other.rootValue.isEmpty) {
       this
-    } else {
-      val $val = $other.rootValue.get
-      
-      if($other.children.isEmpty) {
-        if($val < N) new Branch(N, left + $val, right)
-        else new Branch(N, left, right + $val)
-      }
-      else {
-        val $left = $other.children.head
-        val $right = $other.children.last
-        
-        if($val < N) {
-          if($right.rootValue.getOrElse(N-1) > N) new Branch(N, (left + $val) u $left, right u $right)
-          else new Branch(N, left u $other, right)
-        }
-        else {
-          if($left.rootValue.getOrElse(N+1) < N) new Branch(N, left u $left, (right + $val) u $right)
-          else new Branch(N, left, right u $other)
-        }
-      }
     }
-    
+    else if(!$other.hasChildren) {
+      if($other < N) new Branch(N, left + $other.rootValue, right)
+      else new Branch(N, left, right + $other.rootValue)
+    }
+    else if($other < N) {
+      if($other.right > N) new Branch(N, (left + $other.rootValue) u $other.left, right u $other.right)
+      else new Branch(N, left u $other, right)
+    }
+    else {
+      if($other.left < N) new Branch(N, left u $other.left, (right + $other.rootValue) u $other.right)
+      else new Branch(N, left, right u $other)
+    }
   }
   
-  def n (other:Node[Int]) = {
-    if(other.rootValue.isEmpty) EmptyLeaf
+  def n (other:BinaryTree[Int]) = {
+    if(other.rootValue.isEmpty) {
+      EmptyLeaf
+    }
     else if(other.contains(N)) {
       val $other = other - N
       new Branch(N, left n $other, right n $other)
