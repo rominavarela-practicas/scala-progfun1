@@ -2,10 +2,6 @@ package presistent.binary_tree
 
 import presistent.Node
 
-/**
- * In scala, an object is a singleton.
- * All empty leafs point to the same construct.
- */
 object EmptyLeaf extends Node[Int] {
   def rootValue = None
   def children = List()
