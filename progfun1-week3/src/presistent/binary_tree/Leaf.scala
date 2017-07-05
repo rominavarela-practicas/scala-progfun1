@@ -36,7 +36,7 @@ class Leaf(val N:Int) extends BinTreeNode[Int] {
   }
   
   def u (other:BinTreeNode[Int]) = {
-    if(!other.rootValue.isDefined) this
+    if(other.isEmpty) this
     else if(other.contains(N)) other
     else if(other.rootValue.get < N) new Branch(N, other, EmptyLeaf)
     else new Branch(N, EmptyLeaf, other)

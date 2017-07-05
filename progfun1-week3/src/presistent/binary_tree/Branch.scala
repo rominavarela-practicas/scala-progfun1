@@ -40,7 +40,7 @@ class Branch (val N:Int, val left:BinTreeNode[Int], val right:BinTreeNode[Int]) 
   def u (other:BinTreeNode[Int]) = {
     val $other = other - N
     
-    if($other.rootValue.isEmpty) {
+    if($other.isEmpty) {
       this
     }
     else if(!$other.hasChildren) {
@@ -58,7 +58,7 @@ class Branch (val N:Int, val left:BinTreeNode[Int], val right:BinTreeNode[Int]) 
   }
   
   def n (other:BinTreeNode[Int]) = {
-    if(other.rootValue.isEmpty) {
+    if(other.isEmpty) {
       EmptyLeaf
     }
     else if(other.contains(N)) {

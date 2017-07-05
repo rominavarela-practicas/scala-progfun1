@@ -4,7 +4,8 @@ trait BinTreeNode[T <: AnyVal] {
   def rootValue : Option[T]
   def left : BinTreeNode[T]
   def right : BinTreeNode[T]
-  def hasChildren : Boolean = left.rootValue.isDefined && right.rootValue.isDefined
+  def isEmpty : Boolean = rootValue.isEmpty
+  def hasChildren : Boolean = left.rootValue.isDefined || right.rootValue.isDefined
   
   def contains(elem:T) : Boolean
   def > (elem:T) : Boolean
