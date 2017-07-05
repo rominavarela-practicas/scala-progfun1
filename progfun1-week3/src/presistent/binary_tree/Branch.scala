@@ -1,8 +1,8 @@
 package presistent.binary_tree
 
-import presistent.BinaryTree
+import presistent.BinTreeNode
 
-class Branch (val N:Int, val left:BinaryTree[Int], val right:BinaryTree[Int]) extends BinaryTree[Int] {
+class Branch (val N:Int, val left:BinTreeNode[Int], val right:BinTreeNode[Int]) extends BinTreeNode[Int] {
   def rootValue = Some(N)
   
   def contains(n:Int) = {
@@ -37,7 +37,7 @@ class Branch (val N:Int, val left:BinaryTree[Int], val right:BinaryTree[Int]) ex
     else new Branch(N, left, right - n)
   }
   
-  def u (other:BinaryTree[Int]) = {
+  def u (other:BinTreeNode[Int]) = {
     val $other = other - N
     
     if($other.rootValue.isEmpty) {
@@ -57,7 +57,7 @@ class Branch (val N:Int, val left:BinaryTree[Int], val right:BinaryTree[Int]) ex
     }
   }
   
-  def n (other:BinaryTree[Int]) = {
+  def n (other:BinTreeNode[Int]) = {
     if(other.rootValue.isEmpty) {
       EmptyLeaf
     }
