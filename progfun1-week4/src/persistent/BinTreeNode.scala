@@ -14,5 +14,5 @@ trait BinTreeNode[+V <: AnyVal] {
   def > [U >: V <: AnyVal] (node:BinTreeNode[U]) : Boolean
   def < [U >: V <: AnyVal] (node:BinTreeNode[U]) : Boolean
   
-  def + [U >: V <: AnyVal] (other:U) : BinTreeNode[U]
+  def :: [U >: V <: AnyVal] (other:U) : BinTreeNode[U]
 }

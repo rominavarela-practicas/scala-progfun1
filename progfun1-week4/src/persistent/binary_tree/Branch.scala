@@ -28,10 +28,10 @@ class Branch[+V <: AnyVal](val value:V, val left:BinTreeNode[V], val right:BinTr
     case _ => false
   }
   
-  def + [U >: V <: AnyVal] (other:U) = {
+  def :: [U >: V <: AnyVal] (other:U) = {
     if(this contains other) this
-    if(this > other) new Branch(value, left + other, right)
-    else new Branch(value, left, right + other)
+    if(this > other) new Branch(value, other :: left, right)
+    else new Branch(value, left, other :: right)
   }
   
   override def toString = value + " {" + left + ", " + right + "}"

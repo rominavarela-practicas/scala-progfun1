@@ -26,15 +26,17 @@ object Main extends App {
   hr
   
   println("Topic 2")
-  println("Variance and Pattern Matching")
+  println("Variance, Pattern Matching and Right Associativity")
   println("- To covariant / child classes are notated as +AnyValSub <: AnyVal")
   println("- To contravariant / parent classes are notated as -AnyValSuper >: AnyVal")
-  println("- Decomposition recovers what kind of constructor was used for a value")
-  println("- Patterns can be variables (x:Int), constants (1), constructors (Sum(a,b)) and wildcards (_)")
+  println("- Decomposition patterns can be variables (x:Int), constants (1), constructors (Sum(a,b)) (head :: tail) and wildcards (_)")
+  println("- By convention in scala, operators ending in ':' are applied to the right.")
   println()
   
-  val anyValTree = EmptyLeaf + 3 + 2f + 40 + 'z' + 8 + 1e3
+  val anyValTree1 =  EmptyLeaf.::(3).::(2f).::('z').::(10).::(1e3)
+  val anyValTree2 =  1e3 :: 10 :: 'z' :: 2f :: 3 :: EmptyLeaf
   
-  println(anyValTree)
+  println(anyValTree1)
+  println(anyValTree2)
   
 }

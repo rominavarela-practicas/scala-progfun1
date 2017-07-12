@@ -14,7 +14,7 @@ object EmptyLeaf extends BinTreeNode[Nothing] {
   def > [U <: AnyVal] (node:BinTreeNode[U]) = false
   def < [U <: AnyVal] (node:BinTreeNode[U]) = false
   
-  def + [U <: AnyVal] (other:U) = new Leaf(other)
+  def :: [U <: AnyVal] (other:U) = new Leaf(other)
   
   override def toString = "_."
 }
