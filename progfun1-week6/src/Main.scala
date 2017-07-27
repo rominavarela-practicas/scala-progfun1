@@ -10,5 +10,22 @@ object Main extends App {
   println(FindCombinations.usingFlatMap(N))
   println(FindCombinations.withGenerator(N))
   
+  hr
+  
+  println("Topic 2")
+  println("N Queens problem")
+  val boardSize = 8
+  NQueens.arrange(boardSize).take(4).foreach { board =>
+    board.foreach(queenPosition => {
+      (0 until boardSize).foreach { position =>
+        if(position == queenPosition) print('▓')
+        else print('░')
+        print(' ')
+      }
+      println()
+    })
+    println()
+  }
+  
 }
 
