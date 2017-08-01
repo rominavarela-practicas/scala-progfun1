@@ -27,5 +27,11 @@ object Main extends App {
     println()
   }
   
+  hr
+  
+  println("Topic 3")
+  println("Phone Message problem")
+  val msg = PhoneMessages.translate("633777777772433".toList)
+  println(msg)
 }
 
