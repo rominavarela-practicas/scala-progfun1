@@ -1,4 +1,4 @@
-
+import generators.Generators
 
 object Main extends App {
   def hr = println("\n----------\n")
@@ -8,4 +8,12 @@ object Main extends App {
   hr
   
   Matching.partialFunctionsExample()
+  
+  hr
+  
+  BookStore.showcase()
+  
+  hr
+  
+  Generators.showcase()
 }
