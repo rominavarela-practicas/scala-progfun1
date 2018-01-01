@@ -9,7 +9,7 @@ object Topic1HigherOrderFunctions {
     return(a:Int, b:Int) => loop(a,b,0)
   }
   
-  def factorial = mapReduce((n:Int, accum:Double) => {
+  def factorial = mapReduce(combineFunc = (n:Int, accum:Double) => {
     if(accum > 0) n * accum
     else n
   });

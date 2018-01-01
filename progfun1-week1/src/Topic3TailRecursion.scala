@@ -11,8 +11,8 @@ object Topic3TailRecursion {
   
   def apply() {
     println("Topic 3")
-    println("Tail Recurssion and Termination")
-    println("If a function calls it's self as its last action, the function's stack frame can be reused.")
+    println("Tail Recursion and Termination")
+    println("If a function calls itself as its last action, the function's stack frame can be reused.")
     println()
     
     val x = 5.0
